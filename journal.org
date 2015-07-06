@@ -1,0 +1,27 @@
+* Juillet
+** Lundi 6 juillet
+*** INSTALLATION
+    - git clone <adresse du git>
+    - ccmake ./
+    - cmake ./
+    - make
+
+*** DONE Changer la doc pour les pacakges nécessaires
+    #+BEGIN_SRC bash
+    sudo apt-get install libboost-dev libboost-context-dev
+    #+END_SRC
+
+    - ccmake permet de choisir les options
+    - pour avoir la doc, il faut installer Doxygen (et plus), par exemple
+
+*** 
+    - recherche du package Boost manquant
+    - serait-ce "Boost.Context API v1" ? "libboost-dev" semble suffir
+    - non, il faut également "libboost-context-dev"
+
+*** COMMANDES
+    - dpkg --get-selections | grep boost (recherche toutes les librairies contenant "boost" dans leur nom)
+    - apt -get install/remove <nom de la librairie>
+
+*** TODO 
+    - MSG + SD (simDAG -> Direct Acyclic Graph

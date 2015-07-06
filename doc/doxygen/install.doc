@@ -93,7 +93,7 @@ SimGrid only uses very standard tools:
       for a graphical interface over cmake.
   - LibBoost:
     - osX: with <a href="http://www.finkproject.org/">fink</a>: `sudo fink install boost1.53.nopython`
-    - debian: `apt-get install libboost-dev`
+    - debian: `apt-get install libboost-dev libboost-context-dev`
 
 On MacOSX, it is advised to use the clang compiler (version 3.0 or
 higher), from either MacPort or XCode. If you insist on using gcc on

@@ -1,8 +1,6 @@
 #pragma once
 
 #include "stdafx.h"
-#include "SD_Swag.h"
-#include "surf/surf.h"
 #include "SD_Task_Dependency.h"
 #include "SD_Workstation.h"
 
@@ -12,9 +10,6 @@ class SD_Task_Dependency;
 class SD_Task
 {
 private:
-	/** Use "create" function below instead of constructor */
-	SD_Task();
-	~SD_Task();
 	friend class SD_Simulation;
 public:
 	enum STATE
@@ -137,8 +132,6 @@ private:
 	static SD_Task* create_sized(const char *name, void *data, double amount, int ws_count);
 	void do_schedule();
 	void destroy_scheduling_data();
-
-	static int task_number;
 
 	SD_Swag<SD_Task*>* state_set = nullptr;
 

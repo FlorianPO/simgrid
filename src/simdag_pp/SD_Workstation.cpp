@@ -1,13 +1,11 @@
 #include "SD_Workstation.h"
-#include "xbt/sysdep.h"
-#include "xbt/dict.h"
 
 XBT_LOG_NEW_DEFAULT_SUBCATEGORY(SD_Workstation, sd, "Logging specific to SimDag (workstation)");
 
-SD_Workstation SD_Workstation::create(void* surf_workstation, void* data)
+SD_Workstation* SD_Workstation::create(void* surf_workstation, void* data)
 {
 	SD_Workstation* work;
-	char* name;
+	const char* name;
 
 	work = new SD_Workstation();
 	work->data = data; //user data
@@ -19,7 +17,7 @@ SD_Workstation SD_Workstation::create(void* surf_workstation, void* data)
 	return work;
 }
 
-SD_Workstation SD_Workstation::get_by_name(char* name) {return xbt_lib_get_level(xbt_lib_get_elm_or_null(host_lib, name), SD_HOST_LEVEL);}
+SD_Workstation* SD_Workstation::get_by_name(char* name) {return static_cast<SD_Workstation*>(xbt_lib_get_level(xbt_lib_get_elm_or_null(host_lib, name), SD_HOST_LEVEL));}
 
 char* SD_Workstation::get_name() {return sg_host_name(workstation_surf);}
 
@@ -39,11 +37,11 @@ void SD_Workstation::set_access_mode(ACCESS_MODE access_mode) {this->access_mode
 
 xbt_dict_t SD_Workstation::get_properties() {return surf_resource_get_properties(static_cast<Resource*>(surf_workstation_resource_priv(workstation_surf)));}
 
-const char* SD_Workstation::get_property_value(const char* name) {return xbt_dict_get_or_null(get_properties(), name);}
+const char* SD_Workstation::get_property_value(const char* name) {return static_cast<const char*>(xbt_dict_get_or_null(get_properties(), name));}
 
 SD_Task* SD_Workstation::get_current_task()
 {
-	xbt_assert(access_mode == SD_WORKSTATION_SEQUENTIAL_ACCESS, "Access mode must be set to SD_WORKSTATION_SEQUENTIAL_ACCESS to use this function");
+	xbt_assert(access_mode == SEQUENTIAL_ACCESS, "Access mode must be set to SD_WORKSTATION_SEQUENTIAL_ACCESS to use this function");
 	return current_task;
 }
 
@@ -92,10 +90,10 @@ void SD_Workstation::dump()
 
 bool SD_Workstation::is_busy()
 {
-	 XBT_DEBUG ("Workstation '%s' access mode: '%s', current task: %s, fifo size: %d", get_name(),
+	 XBT_DEBUG ("Workstation '%s' access mode: '%s', current task: %s, task_fifo size: %d", get_name(),
 	       (access_mode == SHARED_ACCESS) ? "SHARED" : "FIFO",
 	       (current_task ? current_task->get_name() : "none"),
-	       (task_fifo ? task_fifo.size() : 0));
+	       int(task_fifo.size()));
 
 	 return access_mode == SEQUENTIAL_ACCESS && (current_task != nullptr || task_fifo.size() > 0);
 }

@@ -1,10 +1,9 @@
 #pragma once
 
+#include "stdafx.h"
+
 class SD_Storage
 {
-private:
-	/** Use "create" function instead of constructor **/
-	SD_Storage();
 public:
 
 	/** Creates a storage **/

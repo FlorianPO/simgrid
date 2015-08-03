@@ -1,16 +1,12 @@
 #pragma once
 
-#include "stdafx.h"
 #include "SD_Task.h"
-#include "../simdag/private.h"
+#include "stdafx.h"
 
 class SD_Task;
 
 class SD_Workstation
 {
-private:
-	/** Use "create" function below instead of constructor */
-	SD_Workstation();
 public:
 	enum ACCESS_MODE
 	{
@@ -18,10 +14,8 @@ public:
 		SEQUENTIAL_ACCESS  									/**< @brief Only one task can be executed, the others wait in a FIFO */
 	};
 
-
-
 	/** Creates a workstation and registers it in SD */
-	static SD_Workstation create(void* surf_workstation, void* data);
+	static SD_Workstation* create(void* surf_workstation, void* data);
 	/** Deletes a workstation */
 	static void destroy(void* workstation) {delete static_cast<SD_Workstation*>(workstation);}
 
@@ -31,7 +25,7 @@ public:
 	inline static void clear_list() {workstation_list.clear();}
 
 	/** Returns a workstation given its name, NULL if not found */
-	static SD_Workstation get_by_name(char* name);
+	static SD_Workstation* get_by_name(char* name);
 
 	/** Returns the name of this workstation */
 	char* get_name();

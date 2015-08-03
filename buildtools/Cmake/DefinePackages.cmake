@@ -423,15 +423,15 @@ set(SIMDAG_SRC
   src/simdag/sd_task.c
   src/simdag/sd_workstation.c
   
+  src/simdag_pp/SD_Swag.cpp
+  src/simdag_pp/INIT_SD.cpp
   src/simdag_pp/SD_Link.cpp
   src/simdag_pp/SD_Route.cpp
   src/simdag_pp/SD_Simulation.cpp
   src/simdag_pp/SD_Storage.cpp
-  src/simdag_pp/SD_Swag.cpp
   src/simdag_pp/SD_Task_Dependency.cpp
   src/simdag_pp/SD_Task.cpp
   src/simdag_pp/SD_Workstation.cpp
-  src/simdag_pp/Main.cpp
   )
 if(HAVE_GRAPHVIZ)
   set(SIMDAG_SRC

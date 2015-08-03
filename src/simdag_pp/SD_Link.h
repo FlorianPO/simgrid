@@ -4,9 +4,6 @@
 
 class SD_Link
 {
-private:
-	/** Use "create" function instead of constructor **/
-	SD_Link();
 public:
 	/** Sharing_policy of the link **/
 	enum SHARING_POLICY

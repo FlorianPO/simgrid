@@ -3,29 +3,8 @@
 #include "SD_Workstation.h"
 #include "SD_Storage.h"
 
-#include "../simdag/private.h"
-#include "instr/instr_interface.h"
-#include "xbt/sysdep.h"
-#include "xbt/dynar.h"
-#include "surf/surf.h"
-#include "simgrid/sg_config.h"
-#include "xbt/ex.h"
-#include "xbt/log.h"
-#include "xbt/str.h"
-#include "xbt/config.h"
-#include "surf/surfxml_parse.h"
-#ifdef HAVE_LUA
-	#include <lua.h>
-	#include <lauxlib.h>
-	#include <lualib.h>
-#endif
-
-#ifdef HAVE_JEDULE
-	#include "instr/jedule/jedule_sd_binding.h"
-#endif
-
-XBT_LOG_NEW_CATEGORY(sd, "Logging specific to SimDag");
-XBT_LOG_NEW_DEFAULT_SUBCATEGORY(sd_kernel, sd, "Logging specific to SimDag (kernel)");
+XBT_LOG_NEW_CATEGORY(sd_pp, "Logging specific to SimDag");
+XBT_LOG_NEW_DEFAULT_SUBCATEGORY(sd_pp_kernel, sd_pp, "Logging specific to SimDag (kernel)");
 
 void SD_Simulation::init(int *argc, char **argv)
 {

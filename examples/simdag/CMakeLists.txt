@@ -83,6 +83,7 @@ set(examples_src
   ${CMAKE_CURRENT_SOURCE_DIR}/sd_test2.c
   ${CMAKE_CURRENT_SOURCE_DIR}/sd_typed_tasks_test.c
   ${CMAKE_CURRENT_SOURCE_DIR}/simdag_trace.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/simdag_pp.cpp
   PARENT_SCOPE
   )
 set(bin_files

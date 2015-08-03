@@ -1,5 +1,4 @@
 #include "SD_Link.h"
-#include "surf/surf_resource.h"
 
 SD_Link* SD_Link::create(void *surf_link, void *data)
 {

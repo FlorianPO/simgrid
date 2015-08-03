@@ -1,7 +1,5 @@
 #include "SD_Storage.h"
 
-#include "surf/surf.h"
-
 SD_Storage* SD_Storage::create(void* surf_storage, void* data)
 {
 	SD_Storage* storage = new SD_Storage();

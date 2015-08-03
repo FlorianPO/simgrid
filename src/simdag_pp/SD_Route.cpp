@@ -1,8 +1,8 @@
 #include "SD_Route.h"
 
 #include "SD_Simulation.h"
-#include "xbt/sysdep.h"
-#include "surf/surf_resource.h"
+
+SD_Simulation* SD_Simulation::_t;
 
 SD_Link* SD_Route::get_list(SD_Workstation* src, SD_Workstation* dst)
 {

@@ -1,9 +1,6 @@
 #pragma once
 
 #include "stdafx.h"
-#include "SD_Swag.h"
-#include "xbt/dynar.h"
-#include "surf/surf.h"
 
 #include "SD_Task.h"
 #include "SD_Link.h"
@@ -13,9 +10,6 @@ class SD_Simulation
 public:
 	/** Access to simulation, do not use it before calling "init" function below **/
 	static SD_Simulation* _t;
-private:
-	/** Use "init" function instead of constructor **/
-	SD_Simulation();
 public:
 	/** Initializes SD internal data **/
 	static void init(int *argc, char **argv);

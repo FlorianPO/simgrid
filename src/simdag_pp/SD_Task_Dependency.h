@@ -6,11 +6,6 @@ class SD_Task;
 class SD_Task_Dependency
 {
 public:
-	/** Use "add" function below instead of constructor */
-	SD_Task_Dependency();
-	~SD_Task_Dependency();
-
-public:
 	/** Adds a dependency between two tasks */
 	static void add(char* name, void* data, SD_Task* src, SD_Task* dst);
 	/** Remove a dependency between two tasks */

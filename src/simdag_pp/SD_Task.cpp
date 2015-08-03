@@ -1,10 +1,9 @@
 #include "SD_Task.h"
 
-#include "../simdag/private.h"
 #include "SD_Route.h"
 #include "SD_Simulation.h"
 
-XBT_LOG_NEW_DEFAULT_SUBCATEGORY(sd_task, sd, "Logging specific to SimDag (task)");
+XBT_LOG_NEW_DEFAULT_SUBCATEGORY(sd_pp_task, sd_pp, "Logging specific to SimDag (task)");
 
 SD_Task* SD_Task::create(const char* name, void* data, double amount)
 {
@@ -14,8 +13,6 @@ SD_Task* SD_Task::create(const char* name, void* data, double amount)
 	task->name = xbt_strdup(name);
 	task->amount = amount;
 	task->remains = amount;
-
-	task_number++;
 
 	//TRACE_sd_task_create(task);
 
@@ -90,6 +87,8 @@ void SD_Task::set_name(char* name)
 }
 
 void* SD_Task::get_data() {return data;}
+
+void SD_Task::set_data(void* data) {this->data = data;}
 
 void SD_Task::set_rate(double rate)
 {
@@ -385,14 +384,14 @@ void SD_Task::dump()
 	{
 		XBT_INFO("  - pre-dependencies:");
 		for (unsigned int i=0; i < tasks_before.size(); i++)
-			XBT_INFO("    %s", tasks_before[i]->getDst());
+			XBT_INFO("    %s", tasks_before[i]->getDst()->get_name());
 
 	}
 	if (tasks_after.size() > 0)
 	{
 		XBT_INFO("  - post-dependencies:");
 		for (unsigned int i=0; i < tasks_after.size(); i++)
-			XBT_INFO("    %s", tasks_after[i]->getDst());
+			XBT_INFO("    %s", tasks_after[i]->getDst()->get_name());
 	}
 }
 
@@ -445,9 +444,9 @@ void SD_Task::schedulev(int count)
 			distribute_comp_amdahl(count);
 		case COMM_E2E:
 		case COMP_SEQ:
-			xbt_assert(int(this->workstation_list.size()) == count, "Got %d locations, but were expecting %d locations", count, this->workstation_list.size());
-			for (int i = 0; i < count; i++)
-				this->workstation_list[i] = list[i];
+			xbt_assert(int(this->workstation_list.size()) == count, "Got %d locations, but were expecting %d locations", count, int(this->workstation_list.size()));
+			//for (int i = 0; i < count; i++)
+			//	this->workstation_list[i] = list[i];
 			if (kind == COMP_SEQ && !flops_amount)
 			{
 				/*This task has failed and is rescheduled. Reset the flops_amount*/
@@ -463,7 +462,7 @@ void SD_Task::schedulev(int count)
 	{
 		SD_Workstation* ws_0 = this->workstation_list[0];
 		SD_Workstation* ws_1 = this->workstation_list[1];
-		XBT_VERB("Schedule comm task %s between %s -> %s. It costs %.f bytes", name, ws_0->get_name(), ws_1->get_name(), bytes_amount[2]);
+		XBT_VERB("Schedule com task %s between %s -> %s. It costs %.f bytes", name, ws_0->get_name(), ws_1->get_name(), bytes_amount[2]);
 	}
 
 	/* Iterate over all children and parents being COMM_E2E to say where I am
@@ -513,7 +512,7 @@ void SD_Task::schedulev(int count)
 	* located (and start them if runnable) */
 	if (kind == COMP_PAR_AMDAHL)
 	{
-		XBT_VERB("Schedule computation task %s on %d workstations. %.f flops will be distributed following Amdahl's Law", name, this->workstation_list.size(), flops_amount[0]);
+		XBT_VERB("Schedule computation task %s on %d workstations. %.f flops will be distributed following Amdahl's Law", name, int(this->workstation_list.size()), flops_amount[0]);
 		for (unsigned int i=0; i < tasks_before.size(); i++)
 		{
 			SD_Task* before = tasks_before[i]->getSrc();
@@ -763,7 +762,7 @@ void SD_Task::just_done()
 			candidate->really_run();
 
 			XBT_DEBUG("Calling __SD_task_is_running: task '%s', state set: %p, running_task_set: %p, is running: %d",
-					candidate->get_name(), candidate->state_set, SD_Simulation::_t->running_task_set, candidate->is_running());
+					candidate->get_name(), candidate->state_set, &SD_Simulation::_t->running_task_set, candidate->is_running());
 			xbt_assert(candidate->is_running(), "Bad state of task '%s': %d", candidate->get_name(), candidate->get_state());
 			XBT_DEBUG("Okay, the task is running.");
 		}

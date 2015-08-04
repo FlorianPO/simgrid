@@ -1,9 +1,8 @@
 #pragma once
 
-#include "stdafx.h"
-
-#include "SD_Task.h"
-#include "SD_Link.h"
+#include "stdafx.hpp"
+#include "SD_Link.hpp"
+#include "SD_Task.hpp"
 
 class SD_Simulation
 {

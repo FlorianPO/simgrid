@@ -1,7 +1,7 @@
-#include "SD_Simulation.h"
+#include "SD_Simulation.hpp"
 
-#include "SD_Workstation.h"
-#include "SD_Storage.h"
+#include "SD_Storage.hpp"
+#include "SD_Workstation.hpp"
 
 XBT_LOG_NEW_CATEGORY(sd_pp, "Logging specific to SimDag");
 XBT_LOG_NEW_DEFAULT_SUBCATEGORY(sd_pp_kernel, sd_pp, "Logging specific to SimDag (kernel)");

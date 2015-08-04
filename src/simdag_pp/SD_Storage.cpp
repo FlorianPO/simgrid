@@ -1,4 +1,4 @@
-#include "SD_Storage.h"
+#include "SD_Storage.hpp"
 
 SD_Storage* SD_Storage::create(void* surf_storage, void* data)
 {

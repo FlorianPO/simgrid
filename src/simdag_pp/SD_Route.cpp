@@ -1,6 +1,6 @@
-#include "SD_Route.h"
+#include "SD_Route.hpp"
 
-#include "SD_Simulation.h"
+#include "SD_Simulation.hpp"
 
 SD_Simulation* SD_Simulation::_t;
 

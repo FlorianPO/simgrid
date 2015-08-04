@@ -1,4 +1,4 @@
-#include "SD_Workstation.h"
+#include "SD_Workstation.hpp"
 
 XBT_LOG_NEW_DEFAULT_SUBCATEGORY(SD_Workstation, sd, "Logging specific to SimDag (workstation)");
 

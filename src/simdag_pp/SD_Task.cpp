@@ -1,7 +1,7 @@
-#include "SD_Task.h"
+#include "SD_Task.hpp"
 
-#include "SD_Route.h"
-#include "SD_Simulation.h"
+#include "SD_Route.hpp"
+#include "SD_Simulation.hpp"
 
 XBT_LOG_NEW_DEFAULT_SUBCATEGORY(sd_pp_task, sd_pp, "Logging specific to SimDag (task)");
 

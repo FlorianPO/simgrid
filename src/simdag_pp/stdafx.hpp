@@ -7,7 +7,6 @@
 #include <stdio.h>
 #include <cfloat>
 
-#include "SD_Swag.h"
 #include "xbt/dict.h"
 #include "xbt/dynar.h"
 #include "surf/surf.h"
@@ -21,6 +20,7 @@
 #include "xbt/str.h"
 #include "xbt/config.h"
 #include "surf/surfxml_parse.h"
+#include "SD_Swag.hpp"
 #ifdef HAVE_LUA
 	#include <lua.h>
 	#include <lauxlib.h>

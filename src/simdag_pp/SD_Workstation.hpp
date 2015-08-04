@@ -1,7 +1,7 @@
 #pragma once
 
-#include "SD_Task.h"
-#include "stdafx.h"
+#include "stdafx.hpp"
+#include "SD_Task.hpp"
 
 class SD_Task;
 

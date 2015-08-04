@@ -1,8 +1,8 @@
 #pragma once
 
-#include "stdafx.h"
-#include "SD_Workstation.h"
-#include "SD_Link.h"
+#include "stdafx.hpp"
+#include "SD_Link.hpp"
+#include "SD_Workstation.hpp"
 
 class SD_Route
 {

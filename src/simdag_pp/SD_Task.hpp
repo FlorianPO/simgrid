@@ -1,8 +1,8 @@
 #pragma once
 
-#include "stdafx.h"
-#include "SD_Task_Dependency.h"
-#include "SD_Workstation.h"
+#include "stdafx.hpp"
+#include "SD_Task_Dependency.hpp"
+#include "SD_Workstation.hpp"
 
 class SD_Workstation;
 class SD_Task_Dependency;

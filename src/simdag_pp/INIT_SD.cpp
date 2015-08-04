@@ -1,4 +1,4 @@
-#include "INIT_SD.h"
+#include "INIT_SD.hpp"
 
 std::vector<SD_Workstation*> SD_Workstation::workstation_list;
 std::vector<SD_Task_Dependency*> SD_Task_Dependency::dependency_list;

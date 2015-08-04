@@ -1,4 +1,4 @@
-#include "SD_Task_Dependency.h"
+#include "SD_Task_Dependency.hpp"
 
 void SD_Task_Dependency::add(char* name, void* data, SD_Task* src, SD_Task* dst)
 {

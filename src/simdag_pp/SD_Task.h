@@ -10,7 +10,7 @@ class SD_Task_Dependency;
 class SD_Task
 {
 private:
-	friend class SD_Simulation;
+	friend class SD_Simulation;								/** Give access to private member inside SD_Simulation member functions */
 public:
 	enum STATE
 	{
